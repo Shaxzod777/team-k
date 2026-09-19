@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автомобили | AutoSalon</title>
+
+    <link rel="stylesheet" href="./css/">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">AutoSalon</a>
+
+            <ul>
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="index.html">Автомобили</a></li>
+                <li><a href="../configurator/index.html">Конфигуратор</a></li>
+                <li><a href="../contacts/index.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Cars -->
+    <main>
+
+        <section class="cars">
+            <div class="container">
+
+                <h1>Наши автомобили</h1>
+                <p>Выберите автомобиль, который подходит именно вам</p>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <select id="brandFilter">
+                        <option value="all">Все марки</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes">Mercedes-Benz</option>
+                        <option value="Audi">Audi</option>
+                    </select>
+
+                    <select id="typeFilter">
+                        <option value="all">Все типы</option>
+                        <option value="sedan">Седан</option>
+                        <option value="suv">SUV</option>
+                        <option value="coupe">Купе</option>
+                    </select>
+                </div>
+
+
+                <!-- Cars Grid -->
+                <div class="cars-grid">
+
+                    <!-- Car 1 -->
+                    <article class="car-card">
+                        <img src="../images/bmw-m5.jpg" alt="BMW M5">
+
+                        <div class="car-info">
+                            <span class="car-brand">BMW</span>
+                            <h2>BMW M5</h2>
+                            <p>Седан · 2025</p>
+
+                            <div class="car-bottom">
+                                <strong>$120 000</strong>
+                                <a href="#" class="details-btn">Подробнее</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Car 2 -->
+                    <article class="car-card">
+                        <img src="../images/mercedes-amg.jpg" alt="Mercedes AMG">
+
+                        <div class="car-info">
+                            <span class="car-brand">Mercedes-Benz</span>
+                            <h2>Mercedes-AMG GT</h2>
+                            <p>Купе · 2025</p>
+
+                            <div class="car-bottom">
+                                <strong>$150 000</strong>
+                                <a href="#" class="details-btn">Подробнее</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Car 3 -->
+                    <article class="car-card">
+                        <img src="../images/audi-rs7.jpg" alt="Audi RS7">
+
+                        <div class="car-info">
+                            <span class="car-brand">Audi</span>
+                            <h2>Audi RS7</h2>
+                            <p>Седан · 2025</p>
+
+                            <div class="car-bottom">
+                                <strong>$130 000</strong>
+                                <a href="#" class="details-btn">Подробнее</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 AutoSalon. Все права защищены.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
