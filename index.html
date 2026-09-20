@@ -1,15 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercedes-Benz — [DEALER NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    
-<h1>ew</h1>
 
-    <script src="./js/index.js"></script>
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+
+   <a class="logo" href="index.html" aria-label="Home">
+  <img class="logo__img" src="logo.webp" alt="Mercedes-Benz">
+</a>
+
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <ul class="nav__list">
+        <li><a class="nav__link is-active" href="index.html">Home</a></li>
+        <li><a class="nav__link" href="cars.html">Model</a></li>
+        <li><a class="nav__link" href="configurator.html">Configurator</a></li>
+        <li><a class="nav__link" href="contacts.html">Contacts</a></li>
+      </ul>
+      <a class="btn btn--ghost btn--sm nav__cta" href="contacts.html">Test drive</a>
+    </nav>
+
+    <a class="btn btn--ghost btn--sm header__cta" href="contacts.html">Test drive</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero container">
+    <p class="eyebrow reveal">New arrivals — [YEAR]</p>
+    <h1 class="hero__title reveal">The sedan that sets the standard</h1>
+    <p class="hero__text reveal">Explore the current line-up, build your own specification and book a test
+      drive at [DEALER NAME] in [CITY].</p>
+
+    <div class="hero__actions reveal">
+      <a class="btn btn--solid" href="configurator.html">Build your own</a>
+      <a class="btn btn--ghost" href="cars.html">View the model</a>
+    </div>
+
+    <div class="media media--hero reveal" data-label="Hero image — 1312 × 620"></div>
+  </section>
+
+  <!-- ============ LINE-UP ============ -->
+  <section class="lineup container" id="lineup">
+    <p class="eyebrow reveal">01 — Line-up</p>
+    <h2 class="section__title reveal">Three ways to drive</h2>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="card__body">
+          <h3 class="card__title">Sedan</h3>
+          <p class="card__price">From [PRICE]</p>
+          <a class="link-arrow" href="cars.html">View model <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="card__body">
+          <h3 class="card__title">SUV</h3>
+          <p class="card__price">From [PRICE]</p>
+          <a class="link-arrow" href="cars.html">View model <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="card__body">
+          <h3 class="card__title">Coupé</h3>
+          <p class="card__price">From [PRICE]</p>
+          <a class="link-arrow" href="cars.html">View model <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SHOWROOM ============ -->
+  <section class="showroom container" id="showroom">
+    <div class="media media--showroom reveal" data-label="Image — 640 × 440"></div>
+
+    <div class="showroom__text">
+      <p class="eyebrow reveal">02 — Showroom</p>
+      <h2 class="section__title reveal">Visit us in [CITY]</h2>
+      <p class="showroom__lead reveal">Every car on the floor is prepared by factory-trained technicians. Come and
+        see it, or reserve a slot for the weekend.</p>
+
+      <ol class="facts reveal">
+        <li class="facts__item"><span class="facts__num">01</span>Factory-trained service, [N] bays</li>
+        <li class="facts__item"><span class="facts__num">02</span>Warranty on every certified car</li>
+        <li class="facts__item"><span class="facts__num">03</span>Trade-in valuation in [TIME]</li>
+      </ol>
+
+      <a class="btn btn--ghost reveal" href="contacts.html">Book a test drive</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+    <img class="footer__logo-img" src="logo.webp" alt="Mercedes-Benz">
+      <p class="footer__addr">[WEPRO], [MIRZO ULUGBEK 35], [SAMARKAND]</p>
+    </div>
+
+    <nav class="footer__cols">
+      <div class="footer__col">
+        <p class="footer__head">Pages</p>
+        <a href="index.html">Home</a>
+        <a href="cars.html">Model</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__head">Buy</p>
+        <a href="configurator.html">Configurator</a>
+        <a href="contacts.html">Test drive</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__head">Contact</p>
+        <a href="tel:+000000000">[PHONE]</a>
+        <a href="mailto:info@example.com">[EMAIL]</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <p class="footer__legal">© [YEAR] [DEALER NAME]. Practice layout — not an official site.</p>
+  </div>
+</footer>
+
+<script src="js/index.js"></script>
 </body>
 </html>
