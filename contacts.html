@@ -8,7 +8,7 @@
 </head>
 <body>
     
-   <div class="contact-container">
+  <div class="contact-container">
     <!-- Левая панель: Инфо -->
     <div class="contact-info">
         <div class="logo-container">
@@ -25,45 +25,56 @@
         <div class="info-details">
             <div class="info-item">
                 <span class="icon">📍</span>
-                <p>ул. Мерседес-Бенц, д. 1, Москва, Россия</p>
+                <p>ул. Амира Темура, Ташкент, Узбекистан</p>
             </div>
             <div class="info-item">
                 <span class="icon">📞</span>
-                <p>8 (800) 200-02-02</p>
+                <p>(+998) 97 123 45 67</p>
             </div>
             <div class="info-item">
                 <span class="icon">✉️</span>
-                <p>info@mercedes-benz.ru</p>
+                <p>info@mercedes-benz.uz</p>
             </div>
         </div>
     </div>
 
     <!-- Правая панель: Форма -->
     <div class="contact-form-container">
-        <form id="contactForm" class="contact-form">
+        <form id="contactForm" class="contact-form" novalidate>
             <div class="input-group">
                 <label for="name">Ваше имя</label>
-                <input type="text" id="name" required placeholder="Иван Иванов">
+                <input type="text" id="name" placeholder="Farizod Akparov">
+                <span class="error-text" id="nameError"></span>
+            </div>
+
+            <!-- Новое поле для телефона -->
+            <div class="input-group">
+                <label for="phone">Номер телефона</label>
+                <input type="text" id="phone" placeholder="(+998) 97 123 45 67">
+                <span class="error-text" id="phoneError"></span>
             </div>
 
             <div class="input-group">
                 <label for="email">Электронная почта</label>
-                <input type="email" id="email" required placeholder="example@mail.com">
+                <input type="email" id="email" placeholder="example@mail.com">
+                <span class="error-text" id="emailError"></span>
             </div>
 
             <div class="input-group">
                 <label for="message">Сообщение</label>
-                <textarea id="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
+                <textarea id="message" rows="4" placeholder="Введите ваше сообщение..."></textarea>
+                <span class="error-text" id="messageError"></span>
             </div>
 
             <button type="submit" class="submit-btn">Отправить запрос</button>
         </form>
         <div id="successMessage" class="success-message hidden">
-            <h3>Спасибо!</h3>
+            <h3>Спасибо, Farizod!</h3>
             <p>Ваше сообщение успешно отправлено. Наш менеджер свяжется с вами в ближайшее время.</p>
         </div>
     </div>
 </div>
+
 
     <script src="./js/contacts.js"></script>
 </body>
