@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('message')
     ];
 
-    // Красиво и плавно убираем ошибку, как только юзер начинает печатать
+    // Убираем ошибку плавно при вводе текста
     inputs.forEach(input => {
         input.addEventListener('input', () => {
             input.classList.remove('invalid');
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let isValid = true;
 
-        // Функция показа красивой ошибки
         const showError = (input, errorSpan, text) => {
             input.classList.add('invalid');
             errorSpan.textContent = text;
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         };
 
-        // Валидация
         if (!nameInput.value.trim()) {
             showError(nameInput, nameError, 'Пожалуйста, укажите ваше имя');
         }
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showError(messageInput, messageError, 'Напишите детали вашего запроса');
         }
 
-        // Эффект отправки заявки
         if (isValid) {
             form.style.opacity = '0';
             form.style.transition = 'opacity 0.4s ease';
