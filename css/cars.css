@@ -14,7 +14,6 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 36px;
-  border-bottom: 1px solid var(--line);
   padding-bottom: 24px;
 }
 
@@ -273,25 +272,71 @@ html.lenis, html.lenis body {
 .cars-hero > .reveal:nth-child(1) { --delay: 0.1s; }
 
 /* Model Range (заголовок h1) */
-.cars-hero > .reveal:nth-child(2) { --delay: 0.11s; }
+.cars-hero > .reveal:nth-child(2) { --delay: 0.09s; }
 
 /* Discover engineering precision... (текст описания) */
-.cars-hero > .reveal:nth-child(3) { --delay: 0.21s; }
+.cars-hero > .reveal:nth-child(3) { --delay: 0.17s; }
 
 /* Кнопки фильтра (All Models / Sedan / SUV / Coupé) */
-.cars-hero > .reveal:nth-child(4) { --delay: 0.31s; }
+.cars-hero > .reveal:nth-child(4) { --delay: 0.26s; }
 
 
 /* 2. Поочередное всплытие карточек автомобилей в каталоге */
 
 /* Первая карточка */
-.cars-grid > .car-card:nth-child(1) { --delay: 0.41s; }
+.cars-grid > .car-card:nth-child(1) { --delay: 0.3s; }
 
 /* Вторая карточка */
-.cars-grid > .car-card:nth-child(2) { --delay: 0.1s; }
+.cars-grid > .car-card:nth-child(2) { --delay: 0.37s; }
 
 /* Третья карточка */
-.cars-grid > .car-card:nth-child(3) { --delay: 0.1s; }
+.cars-grid > .car-card:nth-child(3) { --delay: 0.3s; }
 
 /* Четвертая карточка */
-.cars-grid > .car-card:nth-child(4) { --delay: 0.1s; }
+.cars-grid > .car-card:nth-child(4) { --delay: 0.37s; }
+
+/* ---------- Full-Bleed Cars Grid (Comfortable Padding) ---------- */
+
+.cars-grid {
+  width: 100vw !important;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Аккуратный зазор между карточками */
+  padding-inline: 48px; /* Сделали отступ от краев экрана пошире (было 16px) */
+  box-sizing: border-box;
+}
+
+.car-card {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding-inline: 24px; /* Для планшетов и телефонов поменьше */
+  }
+}
+
+/* ---------- Filter Transition Animation ---------- */
+
+@keyframes cardFilterIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Класс, который JS будет вешать на карточки при фильтрации */
+.car-card.is-filtered-in {
+  animation: cardFilterIn 0.6s var(--ease) forwards;
+}
