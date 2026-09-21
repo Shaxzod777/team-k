@@ -14,7 +14,57 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(raf);
   }
 
-  /* 2. Бургер-меню */
+  /* 2. Мини-галерея в карточках (Стрелки и Точки) */
+  const cardGalleries = document.querySelectorAll('.media--car');
+
+  cardGalleries.forEach((gallery) => {
+    const images = gallery.querySelectorAll('.car-card__img');
+    const prevBtn = gallery.querySelector('.gallery-btn--prev');
+    const nextBtn = gallery.querySelector('.gallery-btn--next');
+    const dots = gallery.querySelectorAll('.dot');
+
+    if (images.length <= 1) return;
+
+    let currentIndex = 0;
+
+    function updateGallery(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('is-active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const newIndex = (currentIndex + 1) % images.length;
+        updateGallery(newIndex);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const newIndex = (currentIndex - 1 + images.length) % images.length;
+        updateGallery(newIndex);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        updateGallery(index);
+      });
+    });
+  });
+
+  /* 3. Бургер-меню */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
   if (burger && nav) {
@@ -25,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* 3. Фильтрация карточек */
+  /* 4. Фильтрация карточек */
   const filterButtons = document.querySelectorAll('.filter-btn');
   const carCards = document.querySelectorAll('.car-card');
 
@@ -50,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* 4. Появление элементов при скролле (Scroll Reveal) */
+  /* 5. Появление элементов при скролле (Scroll Reveal) */
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -65,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach((el) => observer.observe(el));
   }
 
-  /* 5. Эффект прожектора (Spotlight) */
+  /* 6. Эффект прожектора (Spotlight) */
   const text = document.querySelector('.spotlight-text');
   if (text) {
     let targetX = 0, targetY = 0, currentX = 0, currentY = 0;

@@ -47,7 +47,7 @@
   border-color: var(--white);
 }
 
-/* ---------- Catalog Grid --------------------------------- */
+/* ---------- Catalog Grid & Layout (Full Width) ----------- */
 
 .cars-catalog {
   padding-bottom: 120px;
@@ -55,13 +55,17 @@
 
 .cars-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding-inline: 48px;
+  box-sizing: border-box;
 }
 
 /* ---------- Car Card Component --------------------------- */
 
 .car-card {
+  width: 100%;
   background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, .04);
   display: flex;
@@ -77,11 +81,6 @@
 .car-card:hover {
   transform: translateY(-4px);
   border-color: #333;
-}
-
-.media--car {
-  aspect-ratio: 600 / 360;
-  border: 0;
 }
 
 .car-card__body {
@@ -158,40 +157,149 @@
   flex: 1;
 }
 
-/* ---------- Responsive ----------------------------------- */
+/* ---------- Gallery & Image Zoom Component ---------- */
 
-@media (max-width: 960px) {
-  .cars-grid {
-    grid-template-columns: 1fr;
+.media--car {
+  position: relative;
+  aspect-ratio: 600 / 360;
+  border: 0;
+  overflow: hidden;
+}
+
+/* Все изображения галереи */
+.car-card__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Активное изображение */
+.car-card__img.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Приближение активной картинки при ховере */
+.car-card:hover .car-card__img.is-active {
+  transform: scale(1.06);
+}
+
+/* Кнопки-стрелки */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(11, 11, 11, 0.6);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.25s ease;
+  z-index: 3;
+}
+
+.car-card:hover .gallery-btn {
+  opacity: 0.8;
+}
+
+.gallery-btn:hover {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery-btn--prev { left: 12px; }
+.gallery-btn--next { right: 12px; }
+
+/* Точки пагинации */
+.gallery-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.dot.is-active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes cardFilterIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 760px) {
-  .cars-hero {
-    padding-top: 48px;
-  }
-
-  .cars-catalog {
-    padding-bottom: 80px;
-  }
-
-  .car-card__actions {
-    flex-direction: column;
-  }
+.car-card.is-filtered-in {
+  animation: cardFilterIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ---------- Bugatti-style Spotlight Section -------------- */
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease) var(--delay, 0s), 
+              transform 0.7s var(--ease) var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cars-hero > .reveal:nth-child(1) { --delay: 0.1s; }
+.cars-hero > .reveal:nth-child(2) { --delay: 0.09s; }
+.cars-hero > .reveal:nth-child(3) { --delay: 0.17s; }
+.cars-hero > .reveal:nth-child(4) { --delay: 0.26s; }
+
+.cars-grid > .car-card:nth-child(1) { --delay: 0.3s; }
+.cars-grid > .car-card:nth-child(2) { --delay: 0.37s; }
+.cars-grid > .car-card:nth-child(3) { --delay: 0.44s; }
+.cars-grid > .car-card:nth-child(4) { --delay: 0.51s; }
+
+/* ---------- Spotlight Section ---------------------------- */
 
 .spotlight-section {
   position: relative;
   height: 420px;
-  background: var(--bg); /* Совпадает с основным фоном сайта (#0a0a0a) */
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Убрали border-top, чтобы не было сплошной полосы */
   padding-block: 60px;
 }
 
@@ -201,9 +309,7 @@
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #141414; /* Тонкий подмакетный цвет */
-  
-  /* Увеличен радиус пятна до 380px для более масштабного свечения */
+  color: #141414;
   background: radial-gradient(
     circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%),
     rgba(255, 255, 255, 0.98) 0%,
@@ -228,7 +334,7 @@
   opacity: 0.8;
 }
 
-/* ---------- Lenis Smooth Scroll Fixes ------------------- */
+/* ---------- Lenis Fixes ---------------------------------- */
 
 html.lenis, html.lenis body {
   height: auto;
@@ -250,93 +356,29 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* ---------- Stagger Cascade Animation for Cars Page ---------- */
+/* ---------- Responsive ----------------------------------- */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  /* 0.7s — время самого движения, задержка задается через --delay */
-  transition: opacity 0.7s var(--ease) var(--delay, 0s), 
-              transform 0.7s var(--ease) var(--delay, 0s);
-  will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 1. Поэтапное появление верха страницы (Cars Hero) */
-
-/* Explore Line-Up (eyebrow) */
-.cars-hero > .reveal:nth-child(1) { --delay: 0.1s; }
-
-/* Model Range (заголовок h1) */
-.cars-hero > .reveal:nth-child(2) { --delay: 0.09s; }
-
-/* Discover engineering precision... (текст описания) */
-.cars-hero > .reveal:nth-child(3) { --delay: 0.17s; }
-
-/* Кнопки фильтра (All Models / Sedan / SUV / Coupé) */
-.cars-hero > .reveal:nth-child(4) { --delay: 0.26s; }
-
-
-/* 2. Поочередное всплытие карточек автомобилей в каталоге */
-
-/* Первая карточка */
-.cars-grid > .car-card:nth-child(1) { --delay: 0.3s; }
-
-/* Вторая карточка */
-.cars-grid > .car-card:nth-child(2) { --delay: 0.37s; }
-
-/* Третья карточка */
-.cars-grid > .car-card:nth-child(3) { --delay: 0.3s; }
-
-/* Четвертая карточка */
-.cars-grid > .car-card:nth-child(4) { --delay: 0.37s; }
-
-/* ---------- Full-Bleed Cars Grid (Comfortable Padding) ---------- */
-
-.cars-grid {
-  width: 100vw !important;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Аккуратный зазор между карточками */
-  padding-inline: 48px; /* Сделали отступ от краев экрана пошире (было 16px) */
-  box-sizing: border-box;
-}
-
-.car-card {
-  width: 100%;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .cars-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    padding-inline: 24px; /* Для планшетов и телефонов поменьше */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* ---------- Filter Transition Animation ---------- */
-
-@keyframes cardFilterIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
+@media (max-width: 768px) {
+  .cars-hero {
+    padding-top: 48px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* Класс, который JS будет вешать на карточки при фильтрации */
-.car-card.is-filtered-in {
-  animation: cardFilterIn 0.6s var(--ease) forwards;
+  .cars-catalog {
+    padding-bottom: 80px;
+  }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+    padding-inline: 24px;
+  }
+
+  .car-card__actions {
+    flex-direction: column;
+  }
 }
