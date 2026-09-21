@@ -605,3 +605,9 @@ h1,h2,h3,p{ margin:0; }
 @media (max-width:760px){
   .hero__ticker{ aspect-ratio:4 / 5; }
 }
+
+
+html.lenis, html.lenis body{ height:auto; }
+.lenis.lenis-smooth{ scroll-behavior:auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent]{ overscroll-behavior:contain; }
+.lenis.lenis-stopped{ overflow:hidden; }

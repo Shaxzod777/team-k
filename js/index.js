@@ -90,6 +90,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    /* ---------- Smooth inertia scroll ----------------------- */
+  var lenis = null;
+
+  if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    lenis = new Lenis({
+      duration: 1.3,              // «тяжесть»: 0.8 живее, 2.0 плавнее
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      touchMultiplier: 1.6
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // якорные ссылки внутри страницы
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80 });
+      });
+    });
+  }
 
   const section = document.querySelector('.spotlight-section');
   const text = document.querySelector('.spotlight-text');
@@ -150,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
 
 
 
