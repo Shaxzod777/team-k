@@ -1,76 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mercedes-Benz | Контакты WEPRO</title>
     <link rel="stylesheet" href="./css/contacts.css">
 </head>
 <body>
-    
-    <!-- Шапка сайта -->
-    <header>
-        <nav>
-            <div class="logo" style="color: white; font-weight: bold; font-size: 1.5rem;">МойСайт</div>
-            <div class="menu">
-               
-            </div>
-        </nav>
-    </header>
 
-    <!-- Основной контент страницы контактов -->
-    <main class="contact-container">
+<div class="luxury-bg-glow"></div>
+<div class="luxury-bg-glow secondary"></div>
+
+<div class="contact-container">
+    <!-- Левая панель: Инфо-карточка (Эффект матового стекла) -->
+    <div class="contact-info">
+        <div class="info-top">
+            <div class="logo-container">
+                <!-- ИСПРАВЛЕННЫЙ: Точный оригинальный логотип Mercedes-Benz -->
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://w3.org">
+                    <circle cx="50" cy="50" r="45" stroke="#ffffff" stroke-width="4" fill="none"/>
+                    <path d="M50,50 L50,12 M50,50 L17,69 M50,50 L83,69" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <span class="brand-name">Mercedes-Benz</span>
+            </div>
+            
+            <h2 class="main-title">Индивидуальный<br><span class="gradient-text">Запрос</span></h2>
+            <p class="subtitle">Добро пожаловать в пространство персонального сервиса. Оставьте сообщение, и наш амбассадор свяжется с вами.</p>
+        </div>
+
+        <div class="info-details">
+            <div class="info-item">
+                <div class="icon-box">📍</div>
+                <div class="info-text">
+                    <label>Локация</label>
+                    <p>ул. Мирзо Улугбека, Академия WEPRO, Ташкент</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="icon-box">📞</div>
+                <div class="info-text">
+                    <label>Связь</label>
+                    <p>(+998) 97 123 45 67</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="icon-box">✉️</div>
+                <div class="info-text">
+                    <label>Почта</label>
+                    <p>info@mercedes-benz.uz</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая панель: Футуристичная форма -->
+    <div class="contact-form-container">
+        <form id="contactForm" class="contact-form" novalidate>
+            <div class="input-group">
+                <input type="text" id="name" placeholder=" " autocomplete="off">
+                <label for="name">Ваше имя</label>
+                <div class="input-bar"></div>
+                <span class="error-text" id="nameError"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="phone" placeholder=" " autocomplete="off">
+                <label for="phone">Номер телефона</label>
+                <div class="input-bar"></div>
+                <span class="error-text" id="phoneError"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" placeholder=" " autocomplete="off">
+                <label for="email">Электронный адрес</label>
+                <div class="input-bar"></div>
+                <span class="error-text" id="emailError"></span>
+            </div>
+
+            <div class="input-group">
+                <textarea id="message" rows="3" placeholder=" "></textarea>
+                <label for="message">Детали сообщения</label>
+                <div class="input-bar"></div>
+                <span class="error-text" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Отправить запрос</span>
+                <div class="btn-glow"></div>
+                <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.33334 8H12.6667M12.6667 8L8.66668 4M12.6667 8L8.66668 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>
         
-        <!-- Блок с контактными данными -->
-        <section class="contact-info">
-            <h2>Свяжитесь с нами</h2>
-            <p>Мы всегда рады ответить на ваши вопросы. Используйте любые удобные каналы связи или заполните форму.</p>
-            
-            <div class="contact-method" style="margin-top: 30px;">
-                <h3>📍 Адрес</h3>
-                <p>ул. Примерная, дом 10, офис 4</p>
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-ring">
+                <div class="success-icon">✓</div>
             </div>
-            
-            <div class="contact-method">
-                <h3>📞 Телефон</h3>
-                <p>+7 (999) 123-45-67</p>
-            </div>
-            
-            <div class="contact-method">
-                <h3>✉️ Email</h3>
-                <p>info@example.com</p>
-            </div>
-        </section>
+            <h3>Благодарим вас, Farizod!</h3>
+            <p>Ваш персональный запрос успешно отправлен в систему Mercedes-Benz. Мы свяжется с вами в ближайшее время.</p>
+        </div>
+    </div>
+</div>
 
-        <!-- Форма обратной связи -->
-        <section class="contact-form">
-            <h2>Напишите нам</h2>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Ваше имя</label>
-                    <input type="text" id="name" name="name" required placeholder="Иван">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Ваш Email</label>
-                    <input type="email" id="email" name="email" required placeholder="ivan@example.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Отправить</button>
-            </form>
-        </section>
-
-    </main>
-
-    <!-- Подвал сайта -->
-    <footer>
-        <p>&copy; 2026 Все права защищены</p>
-    </footer>
-    <script src="./js/contacts.js"></script>
+<script src="./js/contacts.js"></script>
 </body>
 </html>
