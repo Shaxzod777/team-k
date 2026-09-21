@@ -1,0 +1,162 @@
+/* ===========================================================
+   Mercedes-Benz practice layout — Configurator Page
+   =========================================================== */
+
+.cfg { padding-top: 76px; padding-bottom: 120px; }
+
+.cfg__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.cfg__side {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.media--cfg { aspect-ratio: 640 / 400; }
+
+.cfg__swatch {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 60%, var(--car, #c9c9c9) 0, transparent 60%);
+  opacity: .55;
+  transition: background .4s var(--ease);
+}
+
+.cfg__summary {
+  background: var(--surface-2);
+  border: 1px solid rgba(255,255,255,.04);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cfg__summary-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.cfg__summary-list { display: flex; flex-direction: column; gap: 10px; }
+.cfg__summary-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.cfg__summary-list span {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 10px;
+}
+
+.cfg__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.cfg__total span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.cfg__total strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+}
+
+/* ---------- Options -------------------------------------- */
+
+.cfg__options { display: flex; flex-direction: column; gap: 36px; }
+
+.cfg__group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cfg__group legend {
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 14px;
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+.opt { display: block; cursor: pointer; }
+.opt input, .color input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opt__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+}
+.opt__body em { font-style: normal; color: var(--muted-2); font-size: 12px; }
+.opt:hover .opt__body { border-color: #5a5a5a; }
+.opt input:checked + .opt__body { border-color: var(--white); background: rgba(255,255,255,.05); }
+.opt input:focus-visible + .opt__body,
+.color input:focus-visible + span { outline: 1px solid var(--white); outline-offset: 3px; }
+
+.cfg__colors { display: flex; flex-wrap: wrap; gap: 14px; }
+.color { cursor: pointer; }
+.color span {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c);
+  border: 2px solid var(--line);
+  transition: border-color .25s var(--ease), transform .25s var(--ease);
+}
+.color:hover span { transform: scale(1.06); }
+.color input:checked + span { border-color: var(--white); box-shadow: 0 0 0 3px var(--bg) inset; }
+
+@media (max-width: 960px) {
+  .cfg__layout { grid-template-columns: 1fr; }
+  .cfg__side { position: static; }
+}
+@media (max-width: 760px) {
+  .cfg { padding-top: 48px; padding-bottom: 80px; }
+}
+
+.media .cfg__img {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 84%;
+  object-fit: fill;
+  height: auto;
+  aspect-ratio: 382 / 202;
+  transform: translate(-50%, -50%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 90%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 90%, transparent 100%);
+}

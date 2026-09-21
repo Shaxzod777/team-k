@@ -1,12 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/configurator.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercedes-Benz — Configurator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/configurator.css">
 </head>
 <body>
-    <script src="./js/configurator.js"></script>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Home">
+        <img class="logo__img" src="./public/logo.webp" alt="Mercedes-Benz">
+      </a>
+
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="cars.html">Model</a></li>
+          <li><a class="nav__link is-active" href="configurator.html">Configurator</a></li>
+          <li><a class="nav__link" href="contacts.html">Contacts</a></li>
+        </ul>
+        <a class="btn btn--ghost btn--sm nav__cta" href="contacts.html">Test drive</a>
+      </nav>
+
+      <a class="btn btn--ghost btn--sm header__cta" href="contacts.html">Test drive</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="cfg container">
+      <p class="eyebrow reveal">Build your own</p>
+      <h1 class="hero__title reveal">Configurator</h1>
+
+      <div class="cfg__layout">
+        <!-- Preview + summary -->
+        <aside class="cfg__side">
+          <div class="media media--cfg" id="cfgPreview" data-label="">
+            <div class="cfg__swatch" id="cfgSwatch"></div>
+            <img class="cfg__img" id="cfgImg" src="images/cars/e-class-silver.png" alt="E-Class Sedan">
+          </div>
+
+          <div class="cfg__summary">
+            <h2 class="cfg__summary-title" id="sumModel"></h2>
+            <ul class="cfg__summary-list">
+              <li><span>Color</span><b id="sumColor"></b></li>
+              <li><span>Wheels</span><b id="sumWheels"></b></li>
+              <li><span>Interior</span><b id="sumInterior"></b></li>
+            </ul>
+            <div class="cfg__total">
+              <span>Total</span>
+              <strong id="sumTotal"></strong>
+            </div>
+            <a class="btn btn--solid" href="contacts.html">Request an offer</a>
+          </div>
+        </aside>
+
+        <!-- Options -->
+        <form class="cfg__options" id="cfgForm" onsubmit="return false">
+          <fieldset class="cfg__group" data-group="model">
+            <legend>1. Model</legend>
+            <label class="opt"><input type="radio" name="model" value="e-class" data-price="62300" data-name="E-Class Sedan" checked><span class="opt__body"><b>E-Class Sedan</b><em>$62,300</em></span></label>
+            <label class="opt"><input type="radio" name="model" value="gle" data-price="63800" data-name="GLE SUV"><span class="opt__body"><b>GLE SUV</b><em>$63,800</em></span></label>
+            <label class="opt"><input type="radio" name="model" value="cle" data-price="57600" data-name="CLE Coupé"><span class="opt__body"><b>CLE Coupé</b><em>$57,600</em></span></label>
+            <label class="opt"><input type="radio" name="model" value="s-class" data-price="117300" data-name="S-Class Sedan"><span class="opt__body"><b>S-Class Sedan</b><em>$117,300</em></span></label>
+          </fieldset>
+
+          <fieldset class="cfg__group" data-group="color">
+            <legend>2. Color</legend>
+            <div class="cfg__colors">
+              <label class="color"><input type="radio" name="color" value="#c9c9c9" data-price="0" data-name="Silver" data-key="silver" checked><span style="--c:#c9c9c9" title="Silver"></span></label>
+              <label class="color"><input type="radio" name="color" value="#111111" data-price="800" data-name="Obsidian Black" data-key="black"><span style="--c:#111111" title="Obsidian Black"></span></label>
+              <label class="color"><input type="radio" name="color" value="#f4f4f2" data-price="800" data-name="Polar White" data-key="white"><span style="--c:#f4f4f2" title="Polar White"></span></label>
+              <label class="color"><input type="radio" name="color" value="#1f3a5f" data-price="1200" data-name="Cavansite Blue" data-key="blue"><span style="--c:#1f3a5f" title="Cavansite Blue"></span></label>
+              <label class="color"><input type="radio" name="color" value="#7a1f24" data-price="1200" data-name="Rubellite Red" data-key="red"><span style="--c:#7a1f24" title="Rubellite Red"></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="cfg__group" data-group="wheels">
+            <legend>3. Wheels</legend>
+            <label class="opt"><input type="radio" name="wheels" value="17" data-price="0" data-name='17" Standard' checked><span class="opt__body"><b>17" Standard</b><em>Included</em></span></label>
+            <label class="opt"><input type="radio" name="wheels" value="19" data-price="1500" data-name='19" Multi-spoke'><span class="opt__body"><b>19" Multi-spoke</b><em>+$1,500</em></span></label>
+            <label class="opt"><input type="radio" name="wheels" value="20" data-price="2600" data-name='20" AMG'><span class="opt__body"><b>20" AMG</b><em>+$2,600</em></span></label>
+          </fieldset>
+
+          <fieldset class="cfg__group" data-group="interior">
+            <legend>4. Interior</legend>
+            <label class="opt"><input type="radio" name="interior" value="fabric" data-price="0" data-name="Black Fabric" checked><span class="opt__body"><b>Black Fabric</b><em>Included</em></span></label>
+            <label class="opt"><input type="radio" name="interior" value="leather" data-price="2000" data-name="Nappa Leather"><span class="opt__body"><b>Nappa Leather</b><em>+$2,000</em></span></label>
+            <label class="opt"><input type="radio" name="interior" value="sport" data-price="3200" data-name="Sport Alcantara"><span class="opt__body"><b>Sport Alcantara</b><em>+$3,200</em></span></label>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo-img" src="logo.webp" alt="Mercedes-Benz">
+        <p class="footer__addr">[WEPRO], [MIRZO ULUGBEK 35], [SAMARKAND]</p>
+      </div>
+
+      <nav class="footer__cols">
+        <div class="footer__col">
+          <p class="footer__head">Pages</p>
+          <a href="index.html">Home</a>
+          <a href="cars.html">Model</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__head">Buy</p>
+          <a href="configurator.html">Configurator</a>
+          <a href="contacts.html">Test drive</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__head">Contact</p>
+          <a href="tel:+000000000">[PHONE]</a>
+          <a href="mailto:info@example.com">[EMAIL]</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <p class="footer__legal">© [YEAR] [DEALER NAME]. Practice layout — not an official site.</p>
+    </div>
+  </footer>
+
+  <script src="./js/index.js"></script>
+  <script src="./js/configurator.js"></script>
 </body>
 </html>
