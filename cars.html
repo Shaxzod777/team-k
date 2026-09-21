@@ -1,123 +1,234 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Автомобили | AutoSalon</title>
-
-    <link rel="stylesheet" href="./css/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercedes-Benz — Models</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/cars.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="../index.html" class="logo">AutoSalon</a>
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Home">
+        <img class="logo__img" src="logo.webp" alt="Mercedes-Benz">
+      </a>
 
-            <ul>
-                <li><a href="../index.html">Главная</a></li>
-                <li><a href="index.html">Автомобили</a></li>
-                <li><a href="../configurator/index.html">Конфигуратор</a></li>
-                <li><a href="../contacts/index.html">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
 
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link is-active" href="cars.html">Model</a></li>
+          <li><a class="nav__link" href="configurator.html">Configurator</a></li>
+          <li><a class="nav__link" href="contacts.html">Contacts</a></li>
+        </ul>
+        <a class="btn btn--ghost btn--sm nav__cta" href="contacts.html">Test drive</a>
+      </nav>
 
-    <!-- Cars -->
-    <main>
+      <a class="btn btn--ghost btn--sm header__cta" href="contacts.html">Test drive</a>
+    </div>
+  </header>
 
-        <section class="cars">
-            <div class="container">
+  <main>
+    <!-- ============ CARS HERO / FILTER ============ -->
+    <section class="cars-hero container">
+      <p class="eyebrow reveal">Explore Line-Up</p>
+      <h1 class="hero__title reveal">Model Range</h1>
+      <p class="hero__text reveal">Discover engineering precision across our entire lineup of luxury sedans, performance SUVs, and sports coupés.</p>
+      
+      <!-- Filter Controls -->
+      <div class="cars-filter reveal">
+        <button class="filter-btn is-active" data-filter="all">All Models</button>
+        <button class="filter-btn" data-filter="sedan">Sedan</button>
+        <button class="filter-btn" data-filter="suv">SUV</button>
+        <button class="filter-btn" data-filter="coupe">Coupé</button>
+      </div>
+    </section>
 
-                <h1>Наши автомобили</h1>
-                <p>Выберите автомобиль, который подходит именно вам</p>
-
-                <!-- Filters -->
-                <div class="filters">
-                    <select id="brandFilter">
-                        <option value="all">Все марки</option>
-                        <option value="BMW">BMW</option>
-                        <option value="Mercedes">Mercedes-Benz</option>
-                        <option value="Audi">Audi</option>
-                    </select>
-
-                    <select id="typeFilter">
-                        <option value="all">Все типы</option>
-                        <option value="sedan">Седан</option>
-                        <option value="suv">SUV</option>
-                        <option value="coupe">Купе</option>
-                    </select>
-                </div>
-
-
-                <!-- Cars Grid -->
-                <div class="cars-grid">
-
-                    <!-- Car 1 -->
-                    <article class="car-card">
-                        <img src="../images/bmw-m5.jpg" alt="BMW M5">
-
-                        <div class="car-info">
-                            <span class="car-brand">BMW</span>
-                            <h2>BMW M5</h2>
-                            <p>Седан · 2025</p>
-
-                            <div class="car-bottom">
-                                <strong>$120 000</strong>
-                                <a href="#" class="details-btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <!-- Car 2 -->
-                    <article class="car-card">
-                        <img src="../images/mercedes-amg.jpg" alt="Mercedes AMG">
-
-                        <div class="car-info">
-                            <span class="car-brand">Mercedes-Benz</span>
-                            <h2>Mercedes-AMG GT</h2>
-                            <p>Купе · 2025</p>
-
-                            <div class="car-bottom">
-                                <strong>$150 000</strong>
-                                <a href="#" class="details-btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    <!-- Car 3 -->
-                    <article class="car-card">
-                        <img src="../images/audi-rs7.jpg" alt="Audi RS7">
-
-                        <div class="car-info">
-                            <span class="car-brand">Audi</span>
-                            <h2>Audi RS7</h2>
-                            <p>Седан · 2025</p>
-
-                            <div class="car-bottom">
-                                <strong>$130 000</strong>
-                                <a href="#" class="details-btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-
+    <!-- ============ CARS GRID ============ -->
+    <section class="cars-catalog container">
+      <div class="cars-grid">
+        
+        <!-- Model Card 1 -->
+        <article class="car-card reveal" data-category="sedan">
+          <div class="media media--car" data-label="E-Class Sedan — 600 × 360">
+            <!-- <img src="images/e-class-sedan.webp" alt="E-Class Sedan"> -->
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__header">
+              <span class="car-card__tag">Sedan</span>
+              <h2 class="car-card__title">E-Class Sedan</h2>
+              <p class="car-card__price">From $62,300</p>
             </div>
-        </section>
 
-    </main>
+            <ul class="car-card__specs">
+              <li class="spec-item">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2.0L Turbo / 255 hp</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">0-100 km/h</span>
+                <span class="spec-value">6.2 s</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">Drive</span>
+                <span class="spec-value">4MATIC AWD</span>
+              </li>
+            </ul>
 
+            <div class="car-card__actions">
+              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
+              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+            </div>
+          </div>
+        </article>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 AutoSalon. Все права защищены.</p>
-    </footer>
+        <!-- Model Card 2 -->
+        <article class="car-card reveal" data-category="suv">
+          <div class="media media--car" data-label="GLE SUV — 600 × 360">
+            <!-- <img src="images/gle-suv.webp" alt="GLE SUV"> -->
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__header">
+              <span class="car-card__tag">SUV</span>
+              <h2 class="car-card__title">GLE SUV</h2>
+              <p class="car-card__price">From $63,800</p>
+            </div>
 
+            <ul class="car-card__specs">
+              <li class="spec-item">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">3.0L Inline-6 / 375 hp</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">0-100 km/h</span>
+                <span class="spec-value">5.3 s</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">Drive</span>
+                <span class="spec-value">4MATIC AWD</span>
+              </li>
+            </ul>
 
-    <script src="script.js"></script>
+            <div class="car-card__actions">
+              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
+              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Model Card 3 -->
+        <article class="car-card reveal" data-category="coupe">
+          <div class="media media--car" data-label="CLE Coupé — 600 × 360">
+            <!-- <img src="images/cle-coupe.webp" alt="CLE Coupé"> -->
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__header">
+              <span class="car-card__tag">Coupé</span>
+              <h2 class="car-card__title">CLE Coupé</h2>
+              <p class="car-card__price">From $57,600</p>
+            </div>
+
+            <ul class="car-card__specs">
+              <li class="spec-item">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">3.0L Inline-6 / 375 hp</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">0-100 km/h</span>
+                <span class="spec-value">4.2 s</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">Drive</span>
+                <span class="spec-value">4MATIC AWD</span>
+              </li>
+            </ul>
+
+            <div class="car-card__actions">
+              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
+              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Model Card 4 -->
+        <article class="car-card reveal" data-category="sedan">
+          <div class="media media--car" data-label="S-Class Sedan — 600 × 360">
+            <!-- <img src="images/s-class-sedan.webp" alt="S-Class Sedan"> -->
+          </div>
+          <div class="car-card__body">
+            <div class="car-card__header">
+              <span class="car-card__tag">Sedan</span>
+              <h2 class="car-card__title">S-Class Sedan</h2>
+              <p class="car-card__price">From $117,300</p>
+            </div>
+
+            <ul class="car-card__specs">
+              <li class="spec-item">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">4.0L V8 Biturbo / 496 hp</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">0-100 km/h</span>
+                <span class="spec-value">4.4 s</span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-label">Drive</span>
+                <span class="spec-value">4MATIC AWD</span>
+              </li>
+            </ul>
+
+            <div class="car-card__actions">
+              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
+              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo-img" src="logo.webp" alt="Mercedes-Benz">
+        <p class="footer__addr">[WEPRO], [MIRZO ULUGBEK 35], [SAMARKAND]</p>
+      </div>
+
+      <nav class="footer__cols">
+        <div class="footer__col">
+          <p class="footer__head">Pages</p>
+          <a href="index.html">Home</a>
+          <a href="cars.html">Model</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__head">Buy</p>
+          <a href="configurator.html">Configurator</a>
+          <a href="contacts.html">Test drive</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__head">Contact</p>
+          <a href="tel:+000000000">[PHONE]</a>
+          <a href="mailto:info@example.com">[EMAIL]</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <p class="footer__legal">© [YEAR] [DEALER NAME]. Practice layout — not an official site.</p>
+    </div>
+  </footer>
+
+  <script src="./js/cars.js"></script>
 </body>
 </html>
