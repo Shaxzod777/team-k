@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     out.interior.textContent = interior.dataset.name;
     out.total.textContent = fmt(total);
     out.swatch.style.setProperty('--car', color.value);
-    out.img.src = 'images/cars/' + model.value + '-' + color.dataset.key + '.png';
+    out.img.src = 'public/images/cars/' + model.value + '-' + color.dataset.key + '.png';
     out.img.alt = model.dataset.name + ', ' + color.dataset.name;
   }
 
