@@ -152,11 +152,11 @@
   z-index: 2;
   left: 50%;
   top: 50%;
-  width: 84%;
-  object-fit: fill;
-  height: auto;
-  aspect-ratio: 382 / 202;
+  width: auto;
+  height: 62%;
+  max-width: 92%;
+  object-fit: contain;
   transform: translate(-50%, -50%);
-  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 90%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 90%, transparent 100%);
+  pointer-events: none;
+  -webkit-user-drag: none;
 }

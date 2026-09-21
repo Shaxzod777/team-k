@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     img: document.getElementById('cfgImg'),
   };
 
+  let current = { model: 'e-class', color: 'silver', name: '' };
+
+  function showView() {
+    out.img.src = 'public/images/cars/' + current.model + '-' + current.color + '.png';
+    out.img.alt = current.name;
+  }
+
   function update() {
     const model = checked('model');
     const color = checked('color');
@@ -31,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     out.interior.textContent = interior.dataset.name;
     out.total.textContent = fmt(total);
     out.swatch.style.setProperty('--car', color.value);
-    out.img.src = 'public/images/cars/' + model.value + '-' + color.dataset.key + '.png';
-    out.img.alt = model.dataset.name + ', ' + color.dataset.name;
+    current = { model: model.value, color: color.dataset.key, name: model.dataset.name + ', ' + color.dataset.name };
+    showView();
   }
 
   form.addEventListener('change', update);
