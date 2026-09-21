@@ -116,7 +116,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // Вычисляем координаты относительно текста
       targetX = e.clientX - textRect.left;
       targetY = e.clientY - textRect.top;
+    
+    
+      /* ---------- Yandex map: клик активирует зум ------------- */
+  document.querySelectorAll('.map').forEach(function (map) {
+    var lock = map.querySelector('.map__lock');
+    if (!lock) return;
+
+    lock.addEventListener('click', function () {
+      map.classList.add('is-active');
     });
+
+    map.addEventListener('mouseleave', function () {
+      map.classList.remove('is-active');
+    });
+  });});
 
     // Функция плавной анимации (каждый кадр)
    function animateSpotlight() {
@@ -136,3 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+

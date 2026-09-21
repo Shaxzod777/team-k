@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mercedes-Benz — [DEALER NAME]</title>
+<title>Mercedes-Benz — [SAMARKAND]</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/index.css">
+
 </head>
 <body>
 
@@ -41,17 +42,27 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero container">
-    <p class="eyebrow reveal">New arrivals — [YEAR]</p>
+    <p class="eyebrow reveal">New arrivals — 2026</p>
     <h1 class="hero__title reveal">The sedan that sets the standard</h1>
     <p class="hero__text reveal">Explore the current line-up, build your own specification and book a test
-      drive at [DEALER NAME] in [CITY].</p>
+      drive at WEPRO in SAMARKAND.</p>
 
     <div class="hero__actions reveal">
       <a class="btn btn--solid" href="configurator.html">Build your own</a>
       <a class="btn btn--ghost" href="cars.html">View the model</a>
     </div>
 
-    <div class="media media--hero reveal" data-label="Hero image — 1312 × 620"></div>
+   <div class="hero__ticker reveal">
+  <div class="ticker__track">
+    <span>Mercedes-Benz — Engineered since 1886 — </span>
+    <span>Mercedes-Benz — Engineered since 1886 — </span>
+  </div>
+  <div class="ticker__track ticker__track--rev">
+    <span>The best or nothing — Stuttgart — </span>
+    <span>The best or nothing — Stuttgart — </span>
+  </div>
+</div>
+  </div>
   </section>
 
   <!-- ============ LINE-UP ============ -->
@@ -61,7 +72,7 @@
 
     <div class="cards">
       <article class="card reveal">
-        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="media media--card" data-label="Image — 415 × 260"> <img src="./public/images/cars/e-class-black.png" alt=""></div>
         <div class="card__body">
           <h3 class="card__title">Sedan</h3>
           <p class="card__price">From [PRICE]</p>
@@ -70,7 +81,7 @@
       </article>
 
       <article class="card reveal">
-        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="media media--card" data-label="Image — 415 × 260" ><img src="./public/images/cars/gle-black.png" alt=""></div>
         <div class="card__body">
           <h3 class="card__title">SUV</h3>
           <p class="card__price">From [PRICE]</p>
@@ -79,7 +90,7 @@
       </article>
 
       <article class="card reveal">
-        <div class="media media--card" data-label="Image — 415 × 260"></div>
+        <div class="media media--card" data-label="Image — 415 × 260"> <img src="./public/images/cars/cle-black.png" alt=""></div>
         <div class="card__body">
           <h3 class="card__title">Coupé</h3>
           <p class="card__price">From [PRICE]</p>
@@ -91,11 +102,20 @@
 
   <!-- ============ SHOWROOM ============ -->
   <section class="showroom container" id="showroom">
-    <div class="media media--showroom reveal" data-label="Image — 640 × 440"></div>
+   <div class="media media--showroom map reveal">
+  <iframe
+    src="https://yandex.uz/map-widget/v1/?ll=66.951744%2C39.655848&z=16&pt=66.951744,39.655848,pm2rdm"
+    title="Showroom on the map"
+    loading="lazy"
+    allowfullscreen></iframe>
+  <div class="map__lock"></div>
+</div>
+    
+</div></div>
 
     <div class="showroom__text">
       <p class="eyebrow reveal">02 — Showroom</p>
-      <h2 class="section__title reveal">Visit us in [CITY]</h2>
+      <h2 class="section__title reveal">Visit us in [SAMARKAND]</h2>
       <p class="showroom__lead reveal">Every car on the floor is prepared by factory-trained technicians. Come and
         see it, or reserve a slot for the weekend.</p>
 
@@ -116,7 +136,7 @@
   <div class="container footer__inner">
     <div class="footer__brand">
     <img class="footer__logo-img" src="./public/images/cars/logo.webp" alt="Mercedes-Benz">
-      <p class="footer__addr">[WEPRO], [MIRZO ULUGBEK 35], [SAMARKAND]</p>
+      <p class="footer__addr">WEPRO, MIRZO ULUGBEK 35, SAMARKAND</p>
     </div>
 
     <nav class="footer__cols">
@@ -132,14 +152,14 @@
       </div>
       <div class="footer__col">
         <p class="footer__head">Contact</p>
-        <a href="tel:+000000000">[PHONE]</a>
-        <a href="mailto:info@example.com">[EMAIL]</a>
+        <a href="./contacts.html">+998 99 999 09 90</a>
+        <a href="./contacts.html">mercedes.sam@gmail.com</a>
       </div>
     </nav>
   </div>
 
   <div class="container">
-    <p class="footer__legal">© [YEAR] [DEALER NAME]. Practice layout — not an official site.</p>
+    <p class="footer__legal">© 2026 WEPRO. Practice layout — not an official site.</p>
   </div>
 </footer>
  <section class="spotlight-section">

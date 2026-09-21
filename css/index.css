@@ -222,7 +222,19 @@ h1,h2,h3,p{ margin:0; }
 .media img{ position:relative; z-index:1; width:100%; height:100%; object-fit:cover; }
 
 .media--hero{ aspect-ratio:1312 / 620; }
-.media--card{ aspect-ratio:415 / 260; }
+.car-card-image {
+    width: 100%;
+    height: 187px;
+    overflow: hidden;
+    background: #111;
+}
+
+.car-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
 .media--showroom{ aspect-ratio:640 / 440; }
 
 /* ---------- Hero ----------------------------------------- */
@@ -493,4 +505,103 @@ h1,h2,h3,p{ margin:0; }
   color: var(--muted);
   margin-top: 16px;
   opacity: 0.8;
+}
+
+
+/* ---------- Yandex map ----------------------------------- */
+
+.map{
+  position:relative;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.map::after{ content:none; }
+
+.map iframe{
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* прозрачный слой: карта ловит колёсико только после клика */
+.map__lock{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  cursor:pointer;
+}
+.map.is-active .map__lock{ display:none; }
+
+.map iframe{
+  filter: invert(92%) hue-rotate(180deg) saturate(.75) brightness(.95);
+}
+
+
+/* ---------- Hero ticker ---------------------------------- */
+
+.hero__ticker{
+  aspect-ratio:1312 / 620;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(120% 90% at 50% 50%, rgba(255,255,255,.05), transparent 65%),
+    var(--surface);
+  display:grid;
+  align-content:center;
+  gap:clamp(8px,1.4vw,20px);
+  overflow:hidden;
+
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+
+.ticker__track{
+  display:flex;
+  width:max-content;
+  animation:ticker 32s linear infinite;
+}
+
+.ticker__track span{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(40px,7vw,96px);
+  line-height:1.05;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding-right:.4em;
+
+  background:linear-gradient(92deg,#3a3a3a 0%,#8e8e8e 38%,#f2f2f2 50%,#8e8e8e 62%,#3a3a3a 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.ticker__track--rev{
+  animation-duration:44s;
+  animation-direction:reverse;
+}
+.ticker__track--rev span{
+  font-size:clamp(26px,4.4vw,60px);
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1px #3f3f3f;
+  color:transparent;
+}
+
+@keyframes ticker{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ticker__track{ animation:none; }
+}
+
+@media (max-width:760px){
+  .hero__ticker{ aspect-ratio:4 / 5; }
 }
