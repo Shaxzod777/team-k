@@ -2,10 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
 
+    const inputs = [
+        document.getElementById('name'),
+        document.getElementById('phone'),
+        document.getElementById('email'),
+        document.getElementById('message')
+    ];
+
+    // Красиво и плавно убираем ошибку, как только юзер начинает печатать
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            input.classList.remove('invalid');
+            const errorSpan = document.getElementById(`${input.id}Error`);
+            if (errorSpan) {
+                errorSpan.style.opacity = '0';
+                errorSpan.style.transform = 'translateY(4px)';
+            }
+        });
+    });
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Получаем элементы
         const nameInput = document.getElementById('name');
         const phoneInput = document.getElementById('phone');
         const emailInput = document.getElementById('email');
@@ -16,55 +34,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailError = document.getElementById('emailError');
         const messageError = document.getElementById('messageError');
 
-        // Сбрасываем старые ошибки перед новой проверкой
         let isValid = true;
-        [nameInput, phoneInput, emailInput, messageInput].forEach(input => input.classList.remove('invalid'));
-        [nameError, phoneError, emailError, messageError].forEach(error => error.textContent = '');
 
-        // Проверка Имени
+        // Функция показа красивой ошибки
+        const showError = (input, errorSpan, text) => {
+            input.classList.add('invalid');
+            errorSpan.textContent = text;
+            errorSpan.style.opacity = '1';
+            errorSpan.style.transform = 'translateY(0)';
+            isValid = false;
+        };
+
+        // Валидация
         if (!nameInput.value.trim()) {
-            nameInput.classList.add('invalid');
-            nameError.textContent = 'Пожалуйста, укажите ваше имя';
-            isValid = false;
+            showError(nameInput, nameError, 'Пожалуйста, укажите ваше имя');
         }
 
-        // Проверка Телефона
         if (!phoneInput.value.trim()) {
-            phoneInput.classList.add('invalid');
-            phoneError.textContent = 'Укажите ваш номер телефона';
-            isValid = false;
+            showError(phoneInput, phoneError, 'Укажите контактный номер телефона');
         }
 
-        // Проверка Email
         if (!emailInput.value.trim()) {
-            emailInput.classList.add('invalid');
-            emailError.textContent = 'Заполните это поле';
-            isValid = false;
+            showError(emailInput, emailError, 'Укажите ваш электронный адрес');
         } else if (!emailInput.value.includes('@')) {
-            emailInput.classList.add('invalid');
-            emailError.textContent = 'Введите корректный email адрес';
-            isValid = false;
+            showError(emailInput, emailError, 'Введен некорректный адрес почты');
         }
 
-        // Проверка Сообщения
         if (!messageInput.value.trim()) {
-            messageInput.classList.add('invalid');
-            messageError.textContent = 'Напишите текст сообщения';
-            isValid = false;
+            showError(messageInput, messageError, 'Напишите детали вашего запроса');
         }
 
-        // Если всё заполнено верно
+        // Эффект отправки заявки
         if (isValid) {
-            const formData = {
-                name: nameInput.value,
-                phone: phoneInput.value,
-                email: emailInput.value,
-                message: messageInput.value
-            };
-            console.log('Данные формы:', formData);
-
-            form.style.display = 'none';
-            successMessage.classList.remove('hidden');
+            form.style.opacity = '0';
+            form.style.transition = 'opacity 0.4s ease';
+            
+            setTimeout(() => {
+                form.style.display = 'none';
+                successMessage.classList.remove('hidden');
+            }, 400);
         }
     });
 });
