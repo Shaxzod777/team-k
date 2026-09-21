@@ -1,191 +1,371 @@
-/* Общие стили в стиле Mercedes (премиальный темный минимализм) */
+@import url('https://googleapis.com');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-    background-color: #0f0f11;
+    background-color: #030305;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    position: relative;
 }
 
+/* Глубокое фоновое неоновое свечение */
+.luxury-bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 188, 212, 0.06) 0%, rgba(0,0,0,0) 70%);
+    top: -10%;
+    left: -10%;
+    z-index: 0;
+    pointer-events: none;
+    animation: pulseGlow 10s infinite alternate;
+}
+
+.luxury-bg-glow.secondary {
+    top: 50%;
+    right: -10%;
+    left: auto;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(0,0,0,0) 70%);
+    animation: pulseGlow 12s infinite alternate-reverse;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(30px, 20px); }
+}
+
+/* Основной контейнер */
 .contact-container {
+    position: relative;
+    z-index: 1;
     display: flex;
-    max-width: 1000px;
+    max-width: 1100px;
     width: 100%;
-    background-color: #18181c;
-    border: 1px solid #2c2c35;
-    border-radius: 4px;
+    background: rgba(18, 18, 24, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Левая панель */
+/* Левая инфо-панель (Glassmorphism) */
 .contact-info {
     flex: 1;
-    background-color: #000000;
-    padding: 50px;
+    background: linear-gradient(145deg, rgba(10, 10, 14, 0.8) 0%, rgba(4, 4, 6, 0.9) 100%);
+    padding: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 40px;
+    gap: 16px;
+    margin-bottom: 50px;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
 }
 
 .brand-name {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.contact-info h2 {
-    font-size: 32px;
+.main-title {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.gradient-text {
     font-weight: 400;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ffffff, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-    color: #8a8a93;
-    margin-bottom: 40px;
-    line-height: 1.6;
+    color: #8c8c96;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
 }
 
 .info-details {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 32px;
+    margin-top: 60px;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 24px;
 }
 
-.info-item .icon {
-    font-size: 20px;
+.icon-box {
+    font-size: 18px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
-.info-item p {
-    color: #d1d1d6;
-    font-size: 15px;
+.info-item:hover .icon-box {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
-/* Правая панель с формой */
+.info-text label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #52525b;
+    margin-bottom: 4px;
+}
+
+.info-text p {
+    color: #e4e4e7;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Правая панель формы */
 .contact-form-container {
     flex: 1.2;
-    padding: 50px;
+    padding: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #141417;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 40px;
 }
 
+/* Инпуты с эффектом умной линии */
 .input-group {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.input-group label {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #8a8a93;
 }
 
 .input-group input, 
 .input-group textarea {
-    background-color: #1f1f24;
-    border: 1px solid #33333b;
-    padding: 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 0;
     color: #ffffff;
-    font-size: 15px;
-    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 300;
     outline: none;
+    z-index: 1;
     transition: border-color 0.3s ease;
 }
 
-.input-group input:focus, 
-.input-group textarea:focus {
-    border-color: #ffffff;
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: #63636e;
+    font-size: 16px;
+    font-weight: 300;
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.input-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.3));
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+}
+
+/* Анимации при фокусе */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -16px;
+    font-size: 11px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.input-group input:focus ~ .input-bar,
+.input-group textarea:focus ~ .input-bar {
+    width: 100%;
+}
+
+/* Ошибки */
+.error-text {
+    color: #ff4d4d;
+    font-size: 11px;
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+}
+
+.input-group input.invalid ~ .input-bar, 
+.input-group textarea.invalid ~ .input-bar {
+    width: 100%;
+    background: #ff4d4d;
+}
+
+/* Кнопка */
 .submit-btn {
+    position: relative;
     background-color: #ffffff;
     color: #000000;
     border: none;
-    padding: 16px;
-    font-size: 15px;
+    padding: 20px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 12px;
     margin-top: 10px;
-    border-radius: 2px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-arrow {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .submit-btn:hover {
-    background-color: #d1d1d6;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
 }
 
-/* Анимация успешной отправки */
+.submit-btn:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Стильный Экран Успеха */
 .success-message {
     text-align: center;
-    animation: fadeIn 0.5s ease forwards;
+    animation: luxuryFadeIn 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.success-ring {
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+.success-icon {
+    font-size: 28px;
+    color: #ffffff;
 }
 
 .success-message h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
 }
 
 .success-message p {
-    color: #8a8a93;
-    line-height: 1.6;
+    color: #8c8c96;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes luxuryFadeIn {
+    from { opacity: 0; transform: scale(0.97) translateY(15px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
+/* Адаптивность */
+@media (max-width: 900px) {
     .contact-container {
         flex-direction: column;
+        border-radius: 16px;
+    }
+    .contact-info {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
     .contact-info, .contact-form-container {
-        padding: 30px;
+        padding: 40px 30px;
+    }
+    .main-title {
+        font-size: 34px;
     }
 }
