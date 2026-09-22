@@ -17,7 +17,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a class="logo" href="index.html" aria-label="Home">
-        <img class="logo__img" src="./public/logos/logo.webp" alt="Mercedes-Benz">
+        <img class="logo__img" src="./public/images/cars/logo.webp" alt="Mercedes-Benz">
       </a>
 
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
@@ -55,24 +55,14 @@
     </section>
 
     <!-- ============ CARS GRID ============ -->
-    <section class="cars-catalog container">
+    <section class="cars-catalog">
       <div class="cars-grid">
         
         <!-- Model Card 1 -->
-        <article class="car-card reveal" data-category="sedan">
+        <article class="car-card reveal" data-category="sedan" data-model="e-class-sedan">
           <div class="media media--car">
-            <img class="car-card__img is-active" src="./public/images/sedan.jpg" alt="E-Class Front">
-            <img class="car-card__img" src="./public/images/sedan_back.jpg" alt="E-Class Back">
-            <img class="car-card__img" src="./public/images/sedan_interior.jpg" alt="E-Class Interior">
-
-            <button class="gallery-btn gallery-btn--prev" aria-label="Previous image">&#10094;</button>
-            <button class="gallery-btn gallery-btn--next" aria-label="Next image">&#10095;</button>
-
-            <div class="gallery-dots">
-              <span class="dot is-active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
+            <img class="car-card__img" src="./public/images/cars/e-class-black.png" alt="E-Class Sedan">
+            <video class="car-card__video" src="./public/videos/e_class.MP4" muted loop playsinline></video>
           </div>
           <div class="car-card__body">
             <div class="car-card__header">
@@ -97,25 +87,17 @@
             </ul>
 
             <div class="car-card__actions">
-              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
-              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+              <span class="btn btn--solid btn--sm">Configure</span>
+              <a class="btn btn--ghost btn--sm js-stop-propagation" href="contacts.html">Test Drive</a>
             </div>
           </div>
         </article>
 
         <!-- Model Card 2 -->
-        <article class="car-card reveal" data-category="suv">
+        <article class="car-card reveal" data-category="suv" data-model="gle-suv">
           <div class="media media--car">
-            <img class="car-card__img is-active" src="./public/images/sedan.jpg" alt="GLE SUV Front">
-            <img class="car-card__img" src="./public/images/sedan_back.jpg" alt="GLE SUV Back">
-
-            <button class="gallery-btn gallery-btn--prev" aria-label="Previous image">&#10094;</button>
-            <button class="gallery-btn gallery-btn--next" aria-label="Next image">&#10095;</button>
-
-            <div class="gallery-dots">
-              <span class="dot is-active"></span>
-              <span class="dot"></span>
-            </div>
+            <img class="car-card__img" src="./public/images/cars/gle-black.png" alt="GLE SUV">
+            <video class="car-card__video" src="./public/videos/gle.MP4" muted loop playsinline></video>
           </div>
           <div class="car-card__body">
             <div class="car-card__header">
@@ -140,25 +122,17 @@
             </ul>
 
             <div class="car-card__actions">
-              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
-              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+              <span class="btn btn--solid btn--sm">Configure</span>
+              <a class="btn btn--ghost btn--sm js-stop-propagation" href="contacts.html">Test Drive</a>
             </div>
           </div>
         </article>
 
         <!-- Model Card 3 -->
-        <article class="car-card reveal" data-category="coupe">
+        <article class="car-card reveal" data-category="coupe" data-model="cle-coupe">
           <div class="media media--car">
-            <img class="car-card__img is-active" src="./public/images/sedan.jpg" alt="CLE Coupé Front">
-            <img class="car-card__img" src="./public/images/sedan_back.jpg" alt="CLE Coupé Back">
-
-            <button class="gallery-btn gallery-btn--prev" aria-label="Previous image">&#10094;</button>
-            <button class="gallery-btn gallery-btn--next" aria-label="Next image">&#10095;</button>
-
-            <div class="gallery-dots">
-              <span class="dot is-active"></span>
-              <span class="dot"></span>
-            </div>
+            <img class="car-card__img" src="./public/images/cars/cle-black.png" alt="CLE Coupé">
+            <video class="car-card__video" src="./public/videos/cle.MP4" muted loop playsinline></video>
           </div>
           <div class="car-card__body">
             <div class="car-card__header">
@@ -183,25 +157,17 @@
             </ul>
 
             <div class="car-card__actions">
-              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
-              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+              <span class="btn btn--solid btn--sm">Configure</span>
+              <a class="btn btn--ghost btn--sm js-stop-propagation" href="contacts.html">Test Drive</a>
             </div>
           </div>
         </article>
 
         <!-- Model Card 4 -->
-        <article class="car-card reveal" data-category="sedan">
+        <article class="car-card reveal" data-category="sedan" data-model="s-class-sedan">
           <div class="media media--car">
-            <img class="car-card__img is-active" src="./public/images/sedan.jpg" alt="S-Class Sedan Front">
-            <img class="car-card__img" src="./public/images/sedan_back.jpg" alt="S-Class Sedan Back">
-
-            <button class="gallery-btn gallery-btn--prev" aria-label="Previous image">&#10094;</button>
-            <button class="gallery-btn gallery-btn--next" aria-label="Next image">&#10095;</button>
-
-            <div class="gallery-dots">
-              <span class="dot is-active"></span>
-              <span class="dot"></span>
-            </div>
+            <img class="car-card__img" src="./public/images/cars/s-class-black.png" alt="S-Class Sedan">
+            <video class="car-card__video" src="./public/videos/s_class.MP4" muted loop playsinline></video>
           </div>
           <div class="car-card__body">
             <div class="car-card__header">
@@ -226,8 +192,8 @@
             </ul>
 
             <div class="car-card__actions">
-              <a class="btn btn--solid btn--sm" href="configurator.html">Configure</a>
-              <a class="btn btn--ghost btn--sm" href="contacts.html">Test Drive</a>
+              <span class="btn btn--solid btn--sm">Configure</span>
+              <a class="btn btn--ghost btn--sm js-stop-propagation" href="contacts.html">Test Drive</a>
             </div>
           </div>
         </article>
@@ -240,8 +206,8 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <img class="footer__logo-img" src="./public/logos/logo.webp" alt="Mercedes-Benz">
-        <p class="footer__addr">[WEPRO], [MIRZO ULUGBEK 35], [SAMARKAND]</p>
+        <img class="footer__logo-img" src="./public/images/cars/logo.webp" alt="Mercedes-Benz">
+        <p class="footer__addr">WEPRO, MIRZO ULUGBEK 35, SAMARKAND</p>
       </div>
 
       <nav class="footer__cols">
@@ -257,14 +223,14 @@
         </div>
         <div class="footer__col">
           <p class="footer__head">Contact</p>
-          <a href="tel:+000000000">[PHONE]</a>
-          <a href="mailto:info@example.com">[EMAIL]</a>
+          <a href="tel:+000000000">+998 99 999 09 90</a>
+          <a href="mailto:info@example.com">mercedes.sam@gmail.com</a>
         </div>
       </nav>
     </div>
 
     <div class="container">
-      <p class="footer__legal">© 2026 DEALER NAME. Practice layout — not an official site.</p>
+      <p class="footer__legal">© 2026 WEPRO. Practice layout — not an official site.</p>
     </div>
 
     <section class="spotlight-section">

@@ -14,53 +14,36 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(raf);
   }
 
-  /* 2. Мини-галерея в карточках (Стрелки и Точки) */
-  const cardGalleries = document.querySelectorAll('.media--car');
+  /* 2. Ховер видео и клик по всей карточке для перехода в конфигуратор */
+  const carCards = document.querySelectorAll('.car-card');
 
-  cardGalleries.forEach((gallery) => {
-    const images = gallery.querySelectorAll('.car-card__img');
-    const prevBtn = gallery.querySelector('.gallery-btn--prev');
-    const nextBtn = gallery.querySelector('.gallery-btn--next');
-    const dots = gallery.querySelectorAll('.dot');
+  carCards.forEach((card) => {
+    card.style.cursor = 'pointer';
 
-    if (images.length <= 1) return;
-
-    let currentIndex = 0;
-
-    function updateGallery(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('is-active', i === index);
+    const video = card.querySelector('.car-card__video');
+    if (video) {
+      card.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
       });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === index);
-      });
-      currentIndex = index;
-    }
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const newIndex = (currentIndex + 1) % images.length;
-        updateGallery(newIndex);
+      card.addEventListener('mouseleave', () => {
+        video.pause();
       });
     }
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const newIndex = (currentIndex - 1 + images.length) % images.length;
-        updateGallery(newIndex);
-      });
-    }
+    // Переход в конфигуратор при клике на карточку
+    card.addEventListener('click', () => {
+      const modelSlug = card.getAttribute('data-model') || 'e-class-sedan';
+      window.location.href = `configurator.html?model=${modelSlug}`;
+    });
+  });
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        updateGallery(index);
-      });
+  /* Предотвращаем клик карточки при нажатии на "Test Drive" */
+  const stopPropagationElements = document.querySelectorAll('.js-stop-propagation');
+  stopPropagationElements.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      e.stopPropagation();
     });
   });
 
@@ -75,9 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* 4. Фильтрация карточек */
+/* 4. Фильтрация с эффектом приплыва */
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const carCards = document.querySelectorAll('.car-card');
 
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -88,13 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       carCards.forEach((card) => {
         const cardCategory = card.getAttribute('data-category');
+        const shouldShow = selectedCategory === 'all' || cardCategory === selectedCategory;
+
+        // Сбрасываем класс анимации для перезапуска
         card.classList.remove('is-filtered-in');
 
-        if (selectedCategory === 'all' || cardCategory === selectedCategory) {
-          card.classList.remove('is-hidden');
-          setTimeout(() => card.classList.add('is-filtered-in'), 30);
+        if (shouldShow) {
+          card.style.display = 'flex';
+          
+          // Запускаем анимацию приплыва
+          requestAnimationFrame(() => {
+            card.classList.add('is-filtered-in');
+          });
         } else {
-          card.classList.add('is-hidden');
+          card.style.display = 'none';
         }
       });
     });
