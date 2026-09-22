@@ -19,8 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let current = { model: 'e-class', color: 'silver', name: '' };
 
   function showView() {
-    out.img.src = 'public/images/cars/' + current.model + '-' + current.color + '.png';
-    out.img.alt = current.name;
+    const src = 'public/images/cars/' + current.model + '-' + current.color + '.png';
+    const alt = current.name;
+
+    if (out.img.getAttribute('src') === src) return;
+
+    const swap = () => {
+      out.img.src = src;
+      out.img.alt = alt;
+      requestAnimationFrame(() => out.img.classList.remove('is-swapping'));
+    };
+
+    out.img.classList.add('is-swapping');
+    out.img.addEventListener('transitionend', swap, { once: true });
   }
 
   function update() {

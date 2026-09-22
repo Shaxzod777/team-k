@@ -156,7 +156,14 @@
   height: 62%;
   max-width: 92%;
   object-fit: contain;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
   pointer-events: none;
   -webkit-user-drag: none;
+  transition: opacity .32s var(--ease), transform .32s var(--ease);
+}
+
+.media .cfg__img.is-swapping {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.94);
 }
