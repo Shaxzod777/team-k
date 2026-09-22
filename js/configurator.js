@@ -18,11 +18,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let current = { model: 'e-class', color: 'silver', name: '' };
 
+  const MODEL_SLUG_MAP = {
+    'e-class-sedan': 'e-class',
+    'gle-suv': 'gle',
+    'cle-coupe': 'cle',
+    's-class-sedan': 's-class',
+  };
+
+  function applyModelFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('model');
+    const value = MODEL_SLUG_MAP[slug];
+    if (!value) return;
+
+    const input = form.querySelector('input[name="model"][value="' + value + '"]');
+    if (input) input.checked = true;
+  }
+
+  let isFirstRender = true;
+
   function showView() {
     const src = 'public/images/cars/' + current.model + '-' + current.color + '.png';
     const alt = current.name;
 
-    if (out.img.getAttribute('src') === src) return;
+    if (out.img.getAttribute('src') === src) { isFirstRender = false; return; }
+
+    if (isFirstRender) {
+      out.img.src = src;
+      out.img.alt = alt;
+      isFirstRender = false;
+      return;
+    }
 
     const swap = () => {
       out.img.src = src;
@@ -54,5 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   form.addEventListener('change', update);
+  applyModelFromQuery();
   update();
 });
